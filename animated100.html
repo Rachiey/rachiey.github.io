@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>✿ Top 100 Animated Movies ✿ Letterboxd Checklist ✿</title>
+<title>✿ Animated 100 ✿ Letterboxd Checklist</title>
 <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Nunito:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -994,7 +994,7 @@ function getSavedNames() {
   }
   return names;
 }
- 
+
 function saveDisplayName(name) {
   const key = getStorageKey(name) + '_displayname';
   localStorage.setItem(key, name);
@@ -1002,16 +1002,18 @@ function saveDisplayName(name) {
 
 function setUser() {
   const nameInput = document.getElementById('nameInput');
-  const name = nameInput.value.trim();
-  if (!name) { showToast('Please enter your name first!'); return; }
+  const name = (nameInput ? nameInput.value : '').trim();
+  if (!name) { showToast('✿ Please enter your name first!'); return; }
   currentUser = name;
   players[name] = loadUser(name);
+  saveDisplayName(name);
   renderHeaderUser();
   updateChecklist();
   updateShareCode();
   document.getElementById('noUserMsg').style.display = 'none';
   document.getElementById('shareArea').style.display = 'flex';
-  showToast('✿ Welcome, ' + name + '! Let\'s see those films~ 🎬');
+  const isReturning = players[name].size > 0;
+  showToast(isReturning ? `✿ Welcome back, ${name}! ${players[name].size}/100 films~ 🎬` : `✿ Welcome, ${name}! Let's see those films~ 🎬`);
 }
 
 function renderHeaderUser() {
@@ -1042,7 +1044,7 @@ function renderNamePicker() {
   ` : '';
   return pickerHtml;
 }
- 
+
 function quickLogin(name) {
   currentUser = name;
   players[name] = loadUser(name);
@@ -1070,7 +1072,7 @@ function switchUser() {
       `).join('')}
     </div>
   ` : '';
- 
+
   document.getElementById('headerRight').innerHTML = `
     <div>
       <div class="name-setup" id="nameSetup">
@@ -1241,7 +1243,7 @@ function showToast(msg) {
 
 // INIT
 updateChecklist();
- 
+
 // Show returning user picker on initial load
 const initNames = getSavedNames();
 if (initNames.length > 0) {
@@ -1262,11 +1264,11 @@ if (initNames.length > 0) {
   `;
   right.appendChild(pickerDiv);
 }
- 
+
 // Add Enter key to initial name input
 const initialInput = document.getElementById('nameInput');
 if (initialInput) initialInput.addEventListener('keydown', e => { if (e.key === 'Enter') setUser(); });
- 
+
 // Check URL for auto-import
 const urlParams = new URLSearchParams(window.location.search);
 const autoCode = urlParams.get('share');
