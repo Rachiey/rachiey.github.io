@@ -1033,7 +1033,7 @@ function renderNamePicker() {
     <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:flex-end;">
       <span style="font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;">returning?</span>
       ${names.map(n => `
-        <button onclick="quickLogin('${n.replace(/'/g,"\\'")}'')" style="
+        <button onclick="quickLogin('${n.replace(/'/g,"\\'")}')" style="
           background:white;border:2px solid var(--border);color:var(--pink-deep);
           padding:5px 12px;border-radius:50px;font-family:'Nunito',sans-serif;
           font-size:12px;font-weight:800;cursor:pointer;transition:all 0.15s;
@@ -1063,7 +1063,7 @@ function switchUser() {
     <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:flex-end;">
       <span style="font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;">returning?</span>
       ${names.map(n => `
-        <button onclick="quickLogin('${n.replace(/'/g,"\\'")}'')" style="
+        <button onclick="quickLogin('${n.replace(/'/g,"\\'")}')" style="
           background:white;border:2px solid var(--border);color:var(--pink-deep);
           padding:5px 12px;border-radius:50px;font-family:'Nunito',sans-serif;
           font-size:12px;font-weight:800;cursor:pointer;transition:all 0.15s;
@@ -1254,7 +1254,7 @@ if (initNames.length > 0) {
   pickerDiv.innerHTML = `
     <span style="font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;">returning?</span>
     ${initNames.map(n => `
-      <button onclick="quickLogin('${n.replace(/'/g,"\\'")}'')" style="
+      <button onclick="quickLogin('${n.replace(/'/g,"\\'")}')" style="
         background:white;border:2px solid var(--border);color:var(--pink-deep);
         padding:5px 12px;border-radius:50px;font-family:'Nunito',sans-serif;
         font-size:12px;font-weight:800;cursor:pointer;
