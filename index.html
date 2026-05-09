@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>✿ Animated 100 ✿ Letterboxd Checklist</title>
+<title>✿ Letterboxd Checklists ✿</title>
 <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Nunito:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -14,29 +14,28 @@
     --border2: #c8e6c3;
     --text: #3d2035;
     --muted: #b08090;
-    --pink: #ff7eb3;
-    --pink-deep: #e8467a;
-    --pink-pale: #ffd6e8;
-    --matcha: #6dbf67;
-    --matcha-deep: #3d8b37;
-    --matcha-pale: #d4edcf;
+    --accent: #ff7eb3;
+    --accent-deep: #e8467a;
+    --accent-pale: #ffd6e8;
+    --accent2: #6dbf67;
+    --accent2-deep: #3d8b37;
+    --accent2-pale: #d4edcf;
     --cream: #fff8e7;
     --gold: #f5c842;
     --silver: #b0b8c8;
     --bronze: #d4895a;
-    --gold-bg: rgba(245,200,66,0.15);
-    --silver-bg: rgba(176,184,200,0.12);
-    --bronze-bg: rgba(212,137,90,0.12);
-    --checked: var(--matcha);
-    --checked-bg: rgba(109,191,103,0.1);
+    --check-bg: linear-gradient(135deg, #6dbf67 0%, #3d8b37 100%);
+    --header-grad: linear-gradient(135deg, rgba(255,102,153,0.85) 0%, rgba(255,240,248,0.85) 100%);
+    --progress-grad: linear-gradient(90deg, #6dbf67 0%, #3d8b37 50%, #ff7eb3 100%);
+    --btn-grad: linear-gradient(135deg, #ff7eb3 0%, #e8467a 100%);
+    --btn-shadow: rgba(232,70,122,0.3);
+    --score-color: #e8467a;
+    --score2-color: #6dbf67;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  /* SCROLLBAR */
   ::-webkit-scrollbar { width: 8px; height: 8px; }
-  ::-webkit-scrollbar-track { background: var(--pink-pale); }
-  ::-webkit-scrollbar-thumb { background: var(--pink); border-radius: 4px; }
+  ::-webkit-scrollbar-track { background: var(--accent-pale); }
+  ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
 
   body {
     background: var(--bg);
@@ -45,716 +44,300 @@
     font-size: 14px;
     line-height: 1.5;
     min-height: 100vh;
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='4' fill='%23ff7eb3' opacity='0.7'/%3E%3C/svg%3E") 12 12, auto;
+    transition: background 0.4s, color 0.4s;
   }
-
-  /* ANIMATED BACKGROUND BLOBS */
   body::before {
     content: '';
-    position: fixed;
-    inset: 0;
+    position: fixed; inset: 0;
     background:
       radial-gradient(ellipse 600px 400px at 10% 20%, rgba(255,126,179,0.12) 0%, transparent 70%),
       radial-gradient(ellipse 500px 500px at 90% 80%, rgba(109,191,103,0.1) 0%, transparent 70%),
       radial-gradient(ellipse 400px 300px at 60% 10%, rgba(255,214,232,0.3) 0%, transparent 60%);
-    pointer-events: none;
-    z-index: 0;
+    pointer-events: none; z-index: 0; transition: background 0.4s;
   }
-
-  /* FLOATING SPARKLES */
   body::after {
     content: '✿ ⋆ ✦ ˚ ✿ ⋆ ✦ ˚ ✿ ⋆ ✦';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    font-size: 18px;
-    color: rgba(255,126,179,0.18);
-    letter-spacing: 28px;
-    pointer-events: none;
-    z-index: 0;
+    position: fixed; top: 0; left: 0; right: 0;
+    font-size: 18px; color: rgba(255,126,179,0.18);
+    letter-spacing: 28px; pointer-events: none; z-index: 0;
     animation: floatSparkle 12s ease-in-out infinite alternate;
-    padding: 12px 20px;
-    white-space: nowrap;
-    overflow: hidden;
+    padding: 12px 20px; white-space: nowrap; overflow: hidden;
   }
+  @keyframes floatSparkle { 0% { transform: translateX(-20px); opacity: 0.5; } 100% { transform: translateX(20px); opacity: 1; } }
 
-  @keyframes floatSparkle {
-    0% { transform: translateX(-20px); opacity: 0.5; }
-    100% { transform: translateX(20px); opacity: 1; }
+  /* HORROR THEME */
+  body.mode-horror {
+    --bg: #160808; --surface: #1f0a0a; --surface2: #2a0e0e;
+    --border: #5c1a1a; --border2: #7a2a2a;
+    --text: #f0d8d8; --muted: #9a6060;
+    --accent: #d63030; --accent-deep: #a31010; --accent-pale: #3a0e0e;
+    --accent2: #c03030; --accent2-deep: #8a0808; --accent2-pale: #2a0808;
+    --cream: #1e0808;
+    --check-bg: linear-gradient(135deg, #d63030 0%, #8a0808 100%);
+    --header-grad: linear-gradient(135deg, rgba(100,10,10,0.95) 0%, rgba(20,5,5,0.95) 100%);
+    --progress-grad: linear-gradient(90deg, #a31010 0%, #6a0808 50%, #d63030 100%);
+    --btn-grad: linear-gradient(135deg, #d63030 0%, #a31010 100%);
+    --btn-shadow: rgba(163,16,16,0.4);
+    --score-color: #d63030; --score2-color: #ff8080;
   }
+  body.mode-horror::before {
+    background:
+      radial-gradient(ellipse 600px 400px at 10% 20%, rgba(160,20,20,0.2) 0%, transparent 70%),
+      radial-gradient(ellipse 500px 500px at 90% 80%, rgba(100,10,10,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 400px 300px at 60% 10%, rgba(60,0,0,0.25) 0%, transparent 60%);
+  }
+  body.mode-horror::after { content: '☽ ✦ ☠ ˚ ☽ ✦ ☠ ˚ ☽ ✦ ☠'; color: rgba(200,50,50,0.2); }
+  body.mode-horror .film-row.checked { background: linear-gradient(135deg, rgba(100,20,20,0.35) 0%, rgba(255,255,255,0.03) 100%); border-color: #5c1a1a; }
+  body.mode-horror .section-heading::before, body.mode-horror .section-heading::after { background: repeating-linear-gradient(90deg, #5c1a1a 0, #5c1a1a 4px, transparent 4px, transparent 8px); }
+
+  /* SCI-FI THEME */
+  body.mode-scifi {
+    --bg: #060d1a; --surface: #0a1525; --surface2: #0d1e30;
+    --border: #1a3a6a; --border2: #1e4a7a;
+    --text: #c8e0f8; --muted: #5a80aa;
+    --accent: #3ab8ff; --accent-deep: #0a7acc; --accent-pale: #0a1e3a;
+    --accent2: #30c0c0; --accent2-deep: #0a8888; --accent2-pale: #061a1a;
+    --cream: #081520;
+    --check-bg: linear-gradient(135deg, #3ab8ff 0%, #0a7acc 100%);
+    --header-grad: linear-gradient(135deg, rgba(10,60,120,0.95) 0%, rgba(5,15,35,0.95) 100%);
+    --progress-grad: linear-gradient(90deg, #0a7acc 0%, #0a8888 50%, #3ab8ff 100%);
+    --btn-grad: linear-gradient(135deg, #3ab8ff 0%, #0a7acc 100%);
+    --btn-shadow: rgba(10,122,204,0.4);
+    --score-color: #3ab8ff; --score2-color: #30c0c0;
+  }
+  body.mode-scifi::before {
+    background:
+      radial-gradient(ellipse 600px 400px at 10% 20%, rgba(20,80,160,0.2) 0%, transparent 70%),
+      radial-gradient(ellipse 500px 500px at 90% 80%, rgba(10,120,180,0.15) 0%, transparent 70%),
+      radial-gradient(ellipse 400px 300px at 60% 10%, rgba(0,40,80,0.25) 0%, transparent 60%);
+  }
+  body.mode-scifi::after { content: '★ ◈ ✦ ◉ ★ ◈ ✦ ◉ ★ ◈ ✦'; color: rgba(58,184,255,0.18); }
+  body.mode-scifi .film-row.checked { background: linear-gradient(135deg, rgba(10,60,120,0.3) 0%, rgba(255,255,255,0.03) 100%); border-color: #1a3a6a; }
+  body.mode-scifi .section-heading::before, body.mode-scifi .section-heading::after { background: repeating-linear-gradient(90deg, #1a3a6a 0, #1a3a6a 4px, transparent 4px, transparent 8px); }
 
   /* HEADER */
   .header {
-    position: relative;
-    z-index: 10;
+    position: relative; z-index: 10;
     padding: 40px 36px 28px;
     border-bottom: 2px dashed var(--border);
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 24px;
-    flex-wrap: wrap;
-    background: linear-gradient(135deg, rgba(255,102,153,0.85) 0%, rgba(255,240,248,0.85) 100%);
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 24px; flex-wrap: wrap;
+    background: var(--header-grad);
     backdrop-filter: blur(12px);
+    transition: background 0.4s, border-color 0.4s;
   }
-
   .header-left h1 {
     font-family: 'Dela Gothic One', sans-serif;
-    font-size: clamp(42px, 7vw, 80px);
-    line-height: 0.95;
-    color: var(--pink-deep);
-    text-shadow: 3px 3px 0 var(--pink-pale), 5px 5px 0 rgba(255,126,179,0.15);
-    letter-spacing: -1px;
+    font-size: clamp(32px, 5vw, 64px);
+    line-height: 0.95; color: var(--score-color);
+    text-shadow: 3px 3px 0 var(--accent-pale), 5px 5px 0 rgba(0,0,0,0.15);
+    letter-spacing: -1px; transition: color 0.4s;
   }
-
-  .header-left h1 .num {
-    color: var(--matcha-deep);
-    text-shadow: 3px 3px 0 var(--matcha-pale), 5px 5px 0 rgba(109,191,103,0.15);
-  }
-
-  .header-left h1 .stars {
-    font-size: 0.4em;
-    color: var(--pink);
-    vertical-align: super;
-    letter-spacing: 2px;
-  }
-
-  .header-left p {
-    color: var(--matcha-deep);
-    margin-top: 10px;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.03em;
-  }
-
+  .header-left h1 .num { color: var(--score2-color); text-shadow: 3px 3px 0 var(--accent2-pale), 5px 5px 0 rgba(0,0,0,0.15); transition: color 0.4s; }
+  .header-left h1 .stars { font-size: 0.4em; color: var(--accent); vertical-align: super; letter-spacing: 2px; transition: color 0.4s; }
+  .header-left p { color: var(--accent2-deep); margin-top: 10px; font-size: 13px; font-weight: 600; transition: color 0.4s; }
   .header-left p::before { content: '🎬 '; }
+  .header-left p a { color: inherit; }
 
-  .header-right {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 10px;
-  }
-
-  .name-setup {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-  }
-
+  .header-right { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+  .name-setup { display: flex; gap: 8px; align-items: center; }
   .name-setup input {
-    background: white;
-    border: 2px solid var(--border);
-    color: var(--text);
-    padding: 10px 16px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    border-radius: 50px;
-    outline: none;
-    width: 180px;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    box-shadow: 0 2px 8px rgba(255,126,179,0.1);
+    background: var(--surface2); border: 2px solid var(--border); color: var(--text);
+    padding: 10px 16px; font-family: 'Nunito', sans-serif; font-size: 14px; font-weight: 600;
+    border-radius: 50px; outline: none; width: 180px;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.4s, color 0.4s;
   }
-
-  .name-setup input:focus {
-    border-color: var(--pink);
-    box-shadow: 0 0 0 4px rgba(255,126,179,0.15);
-  }
-
-  .name-setup input::placeholder { color: #d4a0b4; }
+  .name-setup input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(0,0,0,0.08); }
+  .name-setup input::placeholder { color: var(--muted); }
 
   .btn {
-    background: linear-gradient(135deg, var(--pink) 0%, var(--pink-deep) 100%);
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 0.04em;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: transform 0.15s, box-shadow 0.15s;
-    box-shadow: 0 4px 12px rgba(232,70,122,0.3);
+    background: var(--btn-grad); color: #fff; border: none;
+    padding: 10px 20px; font-family: 'Nunito', sans-serif; font-size: 13px;
+    font-weight: 800; letter-spacing: 0.04em; border-radius: 50px; cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s, background 0.4s;
+    box-shadow: 0 4px 12px var(--btn-shadow);
   }
-  .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(232,70,122,0.4); }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px var(--btn-shadow); }
   .btn:active { transform: scale(0.96) translateY(0); }
-  .btn.secondary {
-    background: white;
-    color: var(--pink-deep);
-    border: 2px solid var(--border);
-    box-shadow: 0 2px 8px rgba(255,126,179,0.1);
-  }
-  .btn.secondary:hover { box-shadow: 0 4px 12px rgba(255,126,179,0.2); }
-  .btn.danger {
-    background: transparent;
-    color: #e84040;
-    border: 2px solid rgba(232,64,64,0.2);
-    font-size: 12px;
-    padding: 6px 14px;
-    box-shadow: none;
-  }
-  .btn.danger:hover { background: rgba(232,64,64,0.08); box-shadow: none; }
+  .btn.secondary { background: var(--surface2); color: var(--score-color); border: 2px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  .btn.secondary:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+  .btn.danger { background: transparent; color: var(--accent); border: 2px solid var(--border); font-size: 12px; padding: 6px 14px; box-shadow: none; }
+  .btn.danger:hover { background: rgba(0,0,0,0.08); }
 
   .current-user-badge {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: white;
-    border: 2px solid var(--border);
-    padding: 8px 16px;
-    border-radius: 50px;
-    font-size: 13px;
-    font-weight: 700;
-    box-shadow: 0 2px 8px rgba(255,126,179,0.12);
+    display: flex; align-items: center; gap: 8px; background: var(--surface2);
+    border: 2px solid var(--border); padding: 8px 16px; border-radius: 50px;
+    font-size: 13px; font-weight: 700; box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    transition: background 0.4s, border-color 0.4s;
   }
-  .current-user-badge .dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--matcha);
-    box-shadow: 0 0 8px var(--matcha);
-    animation: pulse 2s ease-in-out infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 4px var(--matcha); }
-    50% { box-shadow: 0 0 12px var(--matcha), 0 0 20px rgba(109,191,103,0.4); }
-  }
+  .current-user-badge .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--score-color); animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { box-shadow: 0 0 4px var(--score-color); } 50% { box-shadow: 0 0 12px var(--score-color), 0 0 20px rgba(0,0,0,0.2); } }
 
-  /* TABS */
+  /* GENRE SWITCHER */
+  .genre-switcher {
+    position: relative; z-index: 10;
+    display: flex; gap: 4px; padding: 12px 36px 0;
+    background: var(--surface); border-bottom: 1px solid var(--border);
+    transition: background 0.4s, border-color 0.4s;
+  }
+  .genre-tab {
+    padding: 10px 22px; font-family: 'Dela Gothic One', sans-serif;
+    font-size: 12px; letter-spacing: 0.05em; cursor: pointer;
+    border-radius: 12px 12px 0 0; border: 2px solid transparent;
+    border-bottom: none; margin-bottom: -1px; transition: all 0.2s; color: var(--muted);
+  }
+  .genre-tab:hover { color: var(--score-color); }
+  .genre-tab.active { background: var(--surface2); border-color: var(--border); border-bottom-color: var(--surface2); color: var(--score-color); }
+
+  /* VIEW TABS */
   .tabs {
-    display: flex;
-    gap: 0;
-    border-bottom: 2px dashed var(--border);
-    padding: 0 36px;
-    background: rgba(255,255,255,0.8);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    backdrop-filter: blur(16px);
+    display: flex; gap: 0; border-bottom: 2px dashed var(--border);
+    padding: 0 36px; background: var(--surface);
+    position: sticky; top: 0; z-index: 100;
+    backdrop-filter: blur(16px); transition: background 0.4s, border-color 0.4s;
   }
-
   .tab {
-    padding: 15px 26px;
-    color: var(--muted);
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    cursor: pointer;
-    border-bottom: 3px solid transparent;
-    margin-bottom: -2px;
-    transition: color 0.2s, border-color 0.2s;
-    white-space: nowrap;
+    padding: 15px 26px; color: var(--muted); font-size: 13px; font-weight: 800;
+    letter-spacing: 0.04em; text-transform: uppercase; cursor: pointer;
+    border-bottom: 3px solid transparent; margin-bottom: -2px;
+    transition: color 0.2s, border-color 0.2s; white-space: nowrap;
   }
-  .tab:hover { color: var(--pink-deep); }
-  .tab.active {
-    color: var(--pink-deep);
-    border-bottom-color: var(--pink-deep);
-  }
+  .tab:hover { color: var(--score-color); }
+  .tab.active { color: var(--score-color); border-bottom-color: var(--score-color); }
 
   /* PANELS */
   .panel { display: none; padding: 32px 36px; position: relative; z-index: 1; }
   .panel.active { display: block; }
 
-  /* SECTION DECO HEADING */
   .section-heading {
-    font-family: 'Dela Gothic One', sans-serif;
-    font-size: 13px;
-    color: var(--matcha-deep);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    font-family: 'Dela Gothic One', sans-serif; font-size: 13px; color: var(--score-color);
+    letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px; transition: color 0.4s;
   }
   .section-heading::before, .section-heading::after {
-    content: '';
-    flex: 1;
-    height: 2px;
+    content: ''; flex: 1; height: 2px;
     background: repeating-linear-gradient(90deg, var(--border2) 0, var(--border2) 4px, transparent 4px, transparent 8px);
   }
 
-  /* PROGRESS BAR */
+  /* PROGRESS */
   .progress-block {
-    margin-bottom: 28px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    background: white;
-    border: 2px solid var(--border);
-    border-radius: 20px;
-    padding: 20px 24px;
-    box-shadow: 0 4px 20px rgba(255,126,179,0.08);
+    margin-bottom: 28px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+    background: var(--surface2); border: 2px solid var(--border); border-radius: 20px;
+    padding: 20px 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transition: background 0.4s, border-color 0.4s;
   }
+  .score-display { font-family: 'Dela Gothic One', sans-serif; font-size: 54px; color: var(--score-color); line-height: 1; text-shadow: 2px 2px 0 var(--accent-pale); transition: color 0.4s; }
+  .score-display span { color: var(--score2-color); font-size: 26px; transition: color 0.4s; }
+  .progress-bar-wrap { flex: 1; min-width: 200px; }
+  .progress-bar-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 8px; }
+  .progress-bar { height: 10px; background: var(--accent-pale); border-radius: 10px; overflow: hidden; border: 1.5px solid var(--border); transition: background 0.4s; }
+  .progress-fill { height: 100%; background: var(--progress-grad); border-radius: 10px; transition: width 0.5s cubic-bezier(0.34,1.56,0.64,1), background 0.4s; position: relative; overflow: hidden; }
+  .progress-fill::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%); animation: shimmer 2s ease-in-out infinite; }
+  @keyframes shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(200%); } }
 
-  .score-display {
-    font-family: 'Dela Gothic One', sans-serif;
-    font-size: 54px;
-    color: var(--pink-deep);
-    line-height: 1;
-    text-shadow: 2px 2px 0 var(--pink-pale);
-  }
-
-  .score-display span {
-    color: var(--matcha);
-    font-size: 26px;
-    text-shadow: 1px 1px 0 var(--matcha-pale);
-  }
-
-  .progress-bar-wrap {
-    flex: 1;
-    min-width: 200px;
-  }
-
-  .progress-bar-label {
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-    margin-bottom: 8px;
-  }
-
-  .progress-bar {
-    height: 10px;
-    background: var(--pink-pale);
-    border-radius: 10px;
-    overflow: hidden;
-    border: 1.5px solid var(--border);
-  }
-
-  .progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--matcha) 0%, var(--matcha-deep) 50%, var(--pink) 100%);
-    border-radius: 10px;
-    transition: width 0.5s cubic-bezier(0.34,1.56,0.64,1);
-    position: relative;
-    overflow: hidden;
-  }
-  .progress-fill::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
-    animation: shimmer 2s ease-in-out infinite;
-  }
-  @keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(200%); }
-  }
-
-  /* SHARE AREA */
-  .share-area {
-    margin-bottom: 20px;
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  .share-code {
-    background: var(--cream);
-    border: 2px dashed var(--border);
-    padding: 8px 14px;
-    border-radius: 12px;
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    color: var(--matcha-deep);
-    cursor: pointer;
-    transition: border-color 0.2s, background 0.2s;
-    max-width: 280px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .share-code:hover { border-color: var(--matcha); background: var(--matcha-pale); }
-
-  .share-label {
-    font-size: 11px;
-    font-weight: 800;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
+  .share-area { margin-bottom: 20px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .share-code { background: var(--cream); border: 2px dashed var(--border); padding: 8px 14px; border-radius: 12px; font-family: 'Space Mono', monospace; font-size: 11px; color: var(--score2-color); cursor: pointer; transition: border-color 0.2s; max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .share-code:hover { border-color: var(--accent); }
+  .share-label { font-size: 11px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
 
   /* FILM LIST */
-  .film-list {
-    display: grid;
-    gap: 4px;
-  }
-
+  .film-list { display: grid; gap: 4px; }
   .film-row {
-    display: grid;
-    grid-template-columns: 52px 1fr 72px;
-    align-items: center;
-    gap: 0;
-    padding: 10px 14px;
-    border-radius: 14px;
-    cursor: pointer;
-    transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
-    border: 1.5px solid transparent;
-    user-select: none;
-    background: rgba(255,255,255,0.5);
+    display: grid; grid-template-columns: 52px 1fr 72px;
+    align-items: center; gap: 0; padding: 10px 14px; border-radius: 14px;
+    cursor: pointer; transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+    border: 1.5px solid transparent; user-select: none;
+    background: rgba(255,255,255,0.03);
   }
-
-  .film-row:hover {
-    background: white;
-    border-color: var(--border);
-    transform: translateX(4px);
-    box-shadow: 0 2px 12px rgba(255,126,179,0.1);
-  }
-
-  .film-row.checked {
-    background: linear-gradient(135deg, rgba(212,237,207,0.4) 0%, rgba(255,255,255,0.6) 100%);
-    border-color: var(--border2);
-  }
-
-  .film-rank {
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 2px;
-  }
-
-  .film-row.checked .film-rank {
-    color: var(--matcha-deep);
-  }
-
-  .film-title {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text);
-    padding-right: 12px;
-  }
-
-  .film-row.checked .film-title {
-    color: var(--muted);
-    text-decoration: line-through;
-    text-decoration-color: var(--matcha);
-    text-decoration-thickness: 2px;
-  }
-
-  .film-year {
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    color: var(--muted);
-    text-align: right;
-    font-weight: 700;
-  }
-
+  .film-row:hover { background: var(--surface2); border-color: var(--border); transform: translateX(4px); box-shadow: 0 2px 12px rgba(0,0,0,0.12); }
+  .film-row.checked { background: rgba(109,191,103,0.07); border-color: var(--border2); }
+  body.mode-horror .film-row.checked { background: rgba(180,30,30,0.1); }
+  body.mode-scifi .film-row.checked { background: rgba(20,80,180,0.12); }
+  .film-rank { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--muted); font-weight: 700; display: flex; align-items: center; gap: 2px; }
+  .film-row.checked .film-rank { color: var(--score-color); }
+  .film-title { font-size: 14px; font-weight: 600; color: var(--text); padding-right: 12px; }
+  .film-row.checked .film-title { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--score-color); text-decoration-thickness: 2px; }
+  .film-year { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--muted); text-align: right; font-weight: 700; }
   .check-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--matcha) 0%, var(--matcha-deep) 100%);
-    margin-right: 4px;
-    opacity: 0;
-    transform: scale(0) rotate(-90deg);
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 20px; height: 20px; border-radius: 50%; background: var(--check-bg);
+    margin-right: 4px; opacity: 0; transform: scale(0) rotate(-90deg);
     transition: opacity 0.25s, transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
-    flex-shrink: 0;
-    font-size: 11px;
-    color: white;
-    box-shadow: 0 2px 6px rgba(61,139,55,0.4);
+    flex-shrink: 0; font-size: 11px; color: white; box-shadow: 0 2px 6px rgba(0,0,0,0.3);
   }
-  .film-row.checked .check-icon {
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-  }
+  .film-row.checked .check-icon { opacity: 1; transform: scale(1) rotate(0deg); }
 
   /* FILTERS */
-  .filters {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
+  .filters { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
   .filter-btn {
-    background: white;
-    border: 2px solid var(--border);
-    color: var(--muted);
-    padding: 6px 16px;
-    border-radius: 50px;
-    font-size: 12px;
-    font-weight: 800;
-    cursor: pointer;
-    transition: all 0.15s;
-    font-family: 'Nunito', sans-serif;
-    letter-spacing: 0.03em;
+    background: var(--surface2); border: 2px solid var(--border); color: var(--muted);
+    padding: 6px 16px; border-radius: 50px; font-size: 12px; font-weight: 800;
+    cursor: pointer; transition: all 0.15s; font-family: 'Nunito', sans-serif; letter-spacing: 0.03em;
   }
-  .filter-btn:hover { color: var(--pink-deep); border-color: var(--pink); }
-  .filter-btn.active {
-    background: linear-gradient(135deg, var(--pink) 0%, var(--pink-deep) 100%);
-    border-color: var(--pink-deep);
-    color: #fff;
-    box-shadow: 0 3px 10px rgba(232,70,122,0.3);
-  }
+  .filter-btn:hover { color: var(--score-color); border-color: var(--accent); }
+  .filter-btn.active { background: var(--btn-grad); border-color: var(--accent-deep); color: #fff; box-shadow: 0 3px 10px var(--btn-shadow); }
 
-  /* COMPARE PANEL */
-  .compare-intro {
-    max-width: 560px;
-    margin-bottom: 24px;
-  }
-  .compare-intro p {
-    color: var(--muted);
-    line-height: 1.8;
-    margin-bottom: 10px;
-    font-weight: 600;
-    font-size: 13px;
-  }
-
-  .import-area {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 28px;
-  }
-
+  /* COMPARE */
+  .compare-intro { max-width: 560px; margin-bottom: 24px; }
+  .compare-intro p { color: var(--muted); line-height: 1.8; margin-bottom: 8px; font-weight: 600; font-size: 13px; }
+  .import-area { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
   .import-input {
-    background: white;
-    border: 2px dashed var(--border);
-    color: var(--text);
-    padding: 10px 16px;
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    border-radius: 14px;
-    outline: none;
-    flex: 1;
-    min-width: 200px;
-    max-width: 380px;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    font-weight: 700;
+    background: var(--surface2); border: 2px dashed var(--border); color: var(--text);
+    padding: 10px 16px; font-family: 'Space Mono', monospace; font-size: 11px;
+    border-radius: 14px; outline: none; flex: 1; min-width: 200px; max-width: 380px;
+    transition: border-color 0.2s, box-shadow 0.2s; font-weight: 700;
   }
-  .import-input:focus { border-color: var(--pink); box-shadow: 0 0 0 4px rgba(255,126,179,0.12); }
-  .import-input::placeholder { color: #d4a0b4; font-weight: 400; }
+  .import-input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(0,0,0,0.06); }
+  .import-input::placeholder { color: var(--muted); font-weight: 400; }
 
-  /* LEADERBOARD */
-  .leaderboard {
-    display: flex;
-    gap: 14px;
-    margin-bottom: 32px;
-    flex-wrap: wrap;
-  }
-
-  .leader-card {
-    flex: 1;
-    min-width: 140px;
-    max-width: 210px;
-    padding: 22px 18px;
-    border-radius: 20px;
-    border: 2px solid var(--border);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    background: white;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
+  .leaderboard { display: flex; gap: 14px; margin-bottom: 32px; flex-wrap: wrap; }
+  .leader-card { flex: 1; min-width: 140px; max-width: 210px; padding: 22px 18px; border-radius: 20px; border: 2px solid var(--border); text-align: center; position: relative; overflow: hidden; background: var(--surface2); transition: transform 0.2s, background 0.4s; }
   .leader-card:hover { transform: translateY(-4px); }
-
-  .leader-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 4px;
-  }
-
-  .leader-card.rank-1 {
-    background: linear-gradient(135deg, #fffde7 0%, #fff8cc 100%);
-    border-color: rgba(245,200,66,0.5);
-    box-shadow: 0 6px 20px rgba(245,200,66,0.2);
-  }
+  .leader-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+  .leader-card.rank-1 { background: var(--cream); border-color: rgba(245,200,66,0.4); box-shadow: 0 6px 20px rgba(245,200,66,0.15); }
   .leader-card.rank-1::before { background: linear-gradient(90deg, var(--gold), #ffec6e); }
-
-  .leader-card.rank-2 {
-    background: linear-gradient(135deg, #f5f7fa 0%, #eef0f5 100%);
-    border-color: rgba(176,184,200,0.5);
-    box-shadow: 0 6px 20px rgba(176,184,200,0.2);
-  }
+  .leader-card.rank-2 { border-color: rgba(176,184,200,0.4); }
   .leader-card.rank-2::before { background: linear-gradient(90deg, #b0b8c8, #d0d8e8); }
-
-  .leader-card.rank-3 {
-    background: linear-gradient(135deg, #fff4ee 0%, #fde8d8 100%);
-    border-color: rgba(212,137,90,0.4);
-    box-shadow: 0 6px 20px rgba(212,137,90,0.15);
-  }
+  .leader-card.rank-3 { border-color: rgba(212,137,90,0.4); }
   .leader-card.rank-3::before { background: linear-gradient(90deg, var(--bronze), #e8a070); }
+  .leader-medal { font-size: 32px; margin-bottom: 10px; display: block; animation: medalBounce 2s ease-in-out infinite; }
+  @keyframes medalBounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  .leader-name { font-family: 'Dela Gothic One', sans-serif; font-size: 18px; color: var(--text); display: block; margin-bottom: 6px; word-break: break-all; }
+  .leader-score { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--muted); font-weight: 700; }
 
-  .leader-medal {
-    font-size: 32px;
-    margin-bottom: 10px;
-    display: block;
-    animation: medalBounce 2s ease-in-out infinite;
-  }
-  @keyframes medalBounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-4px); }
-  }
-
-  .leader-name {
-    font-family: 'Dela Gothic One', sans-serif;
-    font-size: 18px;
-    color: var(--text);
-    display: block;
-    margin-bottom: 6px;
-    word-break: break-all;
-    letter-spacing: 0.5px;
-  }
-
-  .leader-score {
-    font-family: 'Space Mono', monospace;
-    font-size: 12px;
-    color: var(--muted);
-    font-weight: 700;
-  }
-
-  .leader-card.rank-1 .leader-name { color: #a07800; }
-  .leader-card.rank-2 .leader-name { color: #606878; }
-  .leader-card.rank-3 .leader-name { color: #8c5030; }
-
-  /* COMPARISON GRID */
-  .compare-grid-wrap {
-    overflow-x: auto;
-    border-radius: 16px;
-    border: 2px solid var(--border);
-    box-shadow: 0 4px 20px rgba(255,126,179,0.08);
-  }
-
-  .compare-grid {
-    min-width: 600px;
-    border-collapse: collapse;
-    width: 100%;
-    background: white;
-  }
-
-  .compare-grid th {
-    padding: 14px 16px;
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    border-bottom: 2px solid var(--border);
-    white-space: nowrap;
-    text-align: center;
-    position: sticky;
-    top: 0;
-    background: var(--surface);
-    z-index: 10;
-    font-family: 'Nunito', sans-serif;
-  }
-
-  .compare-grid th.film-col {
-    text-align: left;
-    min-width: 220px;
-  }
-
-  .compare-grid th.rank-col {
-    min-width: 40px;
-    color: var(--muted);
-  }
-
+  .compare-grid-wrap { overflow-x: auto; border-radius: 16px; border: 2px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+  .compare-grid { min-width: 600px; border-collapse: collapse; width: 100%; background: var(--surface2); }
+  .compare-grid th { padding: 14px 16px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; border-bottom: 2px solid var(--border); white-space: nowrap; text-align: center; position: sticky; top: 0; background: var(--surface); z-index: 10; font-family: 'Nunito', sans-serif; color: var(--muted); transition: background 0.4s; }
+  .compare-grid th.film-col { text-align: left; min-width: 220px; }
+  .compare-grid th.rank-col { min-width: 40px; }
   .compare-grid th.gold-col { color: #a07800; }
   .compare-grid th.silver-col { color: #606878; }
   .compare-grid th.bronze-col { color: #8c5030; }
-  .compare-grid th.other-col { color: var(--muted); }
-
-  .compare-grid td {
-    padding: 9px 16px;
-    border-bottom: 1px solid rgba(240,184,206,0.3);
-    font-size: 13px;
-    text-align: center;
-    font-weight: 600;
-  }
-
-  .compare-grid td.film-name {
-    text-align: left;
-    font-size: 13px;
-    color: var(--text);
-  }
-  .compare-grid td.rank-num {
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    color: var(--muted);
-    font-weight: 700;
-  }
-
-  .compare-grid tr:hover td {
-    background: linear-gradient(135deg, rgba(255,214,232,0.2) 0%, rgba(212,237,207,0.15) 100%);
-  }
-
+  .compare-grid td { padding: 9px 16px; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 13px; text-align: center; font-weight: 600; color: var(--text); }
+  .compare-grid td.film-name { text-align: left; }
+  .compare-grid td.rank-num { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--muted); font-weight: 700; }
+  .compare-grid tr:hover td { background: rgba(0,0,0,0.04); }
   .check-cell { font-size: 15px; }
-
-  .player-remove {
-    background: none;
-    border: none;
-    color: #d4a0b4;
-    cursor: pointer;
-    font-size: 12px;
-    padding: 0 4px;
-    transition: color 0.15s;
-    font-family: 'Nunito', sans-serif;
-  }
+  .player-remove { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 12px; padding: 0 4px; transition: color 0.15s; font-family: 'Nunito', sans-serif; }
   .player-remove:hover { color: #e84040; }
 
-  /* EMPTY STATE */
-  .empty-state {
-    text-align: center;
-    padding: 64px 32px;
-    color: var(--muted);
-  }
-  .empty-state .icon { font-size: 52px; margin-bottom: 16px; animation: wobble 3s ease-in-out infinite; display: block; }
-  .empty-state h3 {
-    font-family: 'Dela Gothic One', sans-serif;
-    font-size: 24px;
-    color: var(--pink-deep);
-    margin-bottom: 8px;
-    letter-spacing: 0.5px;
-  }
+  .empty-state { text-align: center; padding: 64px 32px; color: var(--muted); }
+  .empty-state .icon { font-size: 52px; margin-bottom: 16px; display: block; animation: wobble 3s ease-in-out infinite; }
+  @keyframes wobble { 0%,100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
+  .empty-state h3 { font-family: 'Dela Gothic One', sans-serif; font-size: 24px; color: var(--score-color); margin-bottom: 8px; }
   .empty-state p { font-weight: 600; }
 
-  /* TOAST */
-  .toast {
-    position: fixed;
-    bottom: 28px;
-    right: 28px;
-    background: white;
-    border: 2px solid var(--border);
-    color: var(--text);
-    padding: 12px 20px;
-    border-radius: 16px;
-    font-size: 13px;
-    font-weight: 700;
-    z-index: 9999;
-    transform: translateY(80px) scale(0.9);
-    opacity: 0;
-    transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s;
-    pointer-events: none;
-    max-width: 280px;
-    box-shadow: 0 8px 24px rgba(255,126,179,0.2);
-  }
-  .toast.show {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
+  .toast { position: fixed; bottom: 28px; right: 28px; background: var(--surface2); border: 2px solid var(--border); color: var(--text); padding: 12px 20px; border-radius: 16px; font-size: 13px; font-weight: 700; z-index: 9999; transform: translateY(80px) scale(0.9); opacity: 0; transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s; pointer-events: none; max-width: 280px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+  .toast.show { transform: translateY(0) scale(1); opacity: 1; }
 
-  /* RESPONSIVE */
   @media (max-width: 600px) {
     .header { padding: 28px 18px 20px; }
     .panel { padding: 20px 18px; }
     .tabs { padding: 0 10px; }
     .tab { padding: 13px 14px; font-size: 11px; }
     .film-row { grid-template-columns: 42px 1fr 56px; padding: 9px 10px; }
+    .genre-switcher { padding: 10px 18px 0; }
+    .genre-tab { padding: 8px 12px; font-size: 11px; }
   }
 </style>
 </head>
@@ -762,8 +345,8 @@
 
 <div class="header">
   <div class="header-left">
-    <h1>TOP 100<br><span class="num">ANIMATED FILMS</span> <span class="stars">✿✿✿✿✿</span></h1>
-    <p><a href="https://letterboxd.com/brsan/list/letterboxds-top-100-animated-films/">Letterboxd's top 100 animated films</a> — let's gamify watching some cool films!</p>
+    <h1>TOP 100<br><span class="num" id="headingGenre">ANIMATED FILMS</span> <span class="stars" id="headingStars">✿✿✿✿✿</span></h1>
+    <p id="headingLink"><a href="https://letterboxd.com/brsan/list/letterboxds-top-100-animated-films/" target="_blank">Letterboxd's top 100 animated films</a> — let's gamify watching some cool films!</p>
   </div>
   <div class="header-right" id="headerRight">
     <div class="name-setup" id="nameSetup">
@@ -773,18 +356,21 @@
   </div>
 </div>
 
+<div class="genre-switcher">
+  <div class="genre-tab active" onclick="switchGenre('animated', this)">🌸 Animated</div>
+  <div class="genre-tab" onclick="switchGenre('horror', this)">🩸 Horror</div>
+  <div class="genre-tab" onclick="switchGenre('scifi', this)">🚀 Sci-Fi</div>
+</div>
+
 <div class="tabs">
-  <div class="tab active" onclick="switchTab('checklist')">🌸 My List</div>
-  <div class="tab" onclick="switchTab('compare')">🍵 Compare</div>
+  <div class="tab active" onclick="switchTab('checklist', event)">🎬 My List</div>
+  <div class="tab" onclick="switchTab('compare', event)">🍵 Compare</div>
 </div>
 
 <div class="panel active" id="panel-checklist">
-
   <div class="section-heading">✦ your progress ✦</div>
   <div class="progress-block">
-    <div>
-      <div id="scoreDisplay" class="score-display">0<span>/100</span></div>
-    </div>
+    <div><div id="scoreDisplay" class="score-display">0<span>/100</span></div></div>
     <div class="progress-bar-wrap">
       <div class="progress-bar-label">Films watched</div>
       <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
@@ -798,29 +384,25 @@
       <div id="noUserMsg" style="font-size:12px;color:var(--muted);font-weight:600">✿ Set your name above to start tracking</div>
     </div>
   </div>
-
   <div class="section-heading">✦ the films ✦</div>
-
   <div class="filters">
-    <button class="filter-btn active" onclick="setFilter('all', this)">All (100)</button>
-    <button class="filter-btn" onclick="setFilter('unwatched', this)" id="filterUnwatched">Unwatched</button>
-    <button class="filter-btn" onclick="setFilter('watched', this)" id="filterWatched">Watched</button>
+    <button class="filter-btn active" onclick="setFilter('all',this)">All (100)</button>
+    <button class="filter-btn" onclick="setFilter('unwatched',this)">Unwatched</button>
+    <button class="filter-btn" onclick="setFilter('watched',this)">Watched</button>
   </div>
-
   <div class="film-list" id="filmList"></div>
 </div>
 
 <div class="panel" id="panel-compare">
   <div class="section-heading">✦ compare with friends ✦</div>
   <div class="compare-intro">
-    <p>Share your code with friends, then paste theirs here to compare who's seen what. The leaderboard shows your top 3 with gold 🥇, silver 🥈 and bronze 🥉!</p>
+    <p>Share your code with friends, then paste theirs here to compare who's seen what. The leaderboard shows the top 3 with gold 🥇, silver 🥈 and bronze 🥉!</p>
+    <p style="font-size:12px;opacity:0.75">Share codes are genre-specific — make sure you're on the right genre tab!</p>
   </div>
-
   <div class="import-area">
     <input class="import-input" type="text" id="importInput" placeholder="Paste a friend's share code…" autocomplete="off">
     <button class="btn" onclick="importFriend()">Add Friend</button>
   </div>
-
   <div class="leaderboard" id="leaderboard"></div>
   <div id="compareGridWrap"></div>
 </div>
@@ -828,307 +410,174 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const FILMS = [
-  { rank: 1,   title: "Grave of the Fireflies",                              year: 1988 },
-  { rank: 2,   title: "Spirited Away",                                       year: 2001 },
-  { rank: 3,   title: "Princess Mononoke",                                   year: 1997 },
-  { rank: 4,   title: "Perfect Blue",                                        year: 1997 },
-  { rank: 5,   title: "It's Such a Beautiful Day",                           year: 2012 },
-  { rank: 6,   title: "Howl's Moving Castle",                                year: 2004 },
-  { rank: 7,   title: "Fantastic Mr. Fox",                                   year: 2009 },
-  { rank: 8,   title: "Azur & Asmar: The Princes' Quest",                   year: 2006 },
-  { rank: 9,   title: "Akira",                                               year: 1988 },
-  { rank: 10,  title: "The Iron Giant",                                      year: 1999 },
-  { rank: 11,  title: "Song of the Sea",                                     year: 2014 },
-  { rank: 12,  title: "Look Back",                                           year: 2024 },
-  { rank: 13,  title: "Interstella 5555: The 5tory of the 5ecret 5tar 5ystem", year: 2003 },
-  { rank: 14,  title: "Mary and Max",                                        year: 2009 },
-  { rank: 15,  title: "The Tale of The Princess Kaguya",                    year: 2013 },
-  { rank: 16,  title: "The First Slam Dunk",                                 year: 2022 },
-  { rank: 17,  title: "Tokyo Godfathers",                                    year: 2003 },
-  { rank: 18,  title: "Kizumonogatari Part 3: Reiketsu",                    year: 2017 },
-  { rank: 19,  title: "Marcel the Shell with Shoes On",                     year: 2021 },
-  { rank: 20,  title: "Son of the White Mare",                               year: 1981 },
-  { rank: 21,  title: "WALL·E",                                              year: 2008 },
-  { rank: 22,  title: "Millennium Actress",                                  year: 2001 },
-  { rank: 23,  title: "Wolfwalkers",                                         year: 2020 },
-  { rank: 24,  title: "Ratatouille",                                         year: 2007 },
-  { rank: 25,  title: "Your Name.",                                          year: 2016 },
-  { rank: 26,  title: "The Lion King",                                       year: 1994 },
-  { rank: 27,  title: "Flee",                                                year: 2021 },
-  { rank: 28,  title: "Persepolis",                                          year: 2007 },
-  { rank: 29,  title: "A Silent Voice: The Movie",                           year: 2016 },
-  { rank: 30,  title: "The Wild Robot",                                      year: 2024 },
-  { rank: 31,  title: "Night Is Short, Walk On Girl",                        year: 2017 },
-  { rank: 32,  title: "Mind Game",                                           year: 2004 },
-  { rank: 33,  title: "My Neighbor Totoro",                                  year: 1988 },
-  { rank: 34,  title: "Nausicaä of the Valley of the Wind",                 year: 1984 },
-  { rank: 35,  title: "My Life as a Zucchini",                              year: 2016 },
-  { rank: 36,  title: "Coraline",                                            year: 2009 },
-  { rank: 37,  title: "Klaus",                                               year: 2019 },
-  { rank: 38,  title: "Princes and Princesses",                              year: 2000 },
-  { rank: 39,  title: "Whisper of the Heart",                                year: 1995 },
-  { rank: 40,  title: "Ernest & Celestine",                                  year: 2012 },
-  { rank: 41,  title: "Vampire Hunter D: Bloodlust",                        year: 2000 },
-  { rank: 42,  title: "Memoir of a Snail",                                   year: 2024 },
-  { rank: 43,  title: "Blue Giant",                                          year: 2023 },
-  { rank: 44,  title: "Mulan",                                               year: 1998 },
-  { rank: 45,  title: "The Wolf House",                                      year: 2018 },
-  { rank: 46,  title: "Kiki's Delivery Service",                            year: 1989 },
-  { rank: 47,  title: "How to Train Your Dragon",                           year: 2010 },
-  { rank: 48,  title: "Redline",                                             year: 2009 },
-  { rank: 49,  title: "Puss in Boots: The Last Wish",                       year: 2022 },
-  { rank: 50,  title: "Coco",                                                year: 2017 },
-  { rank: 51,  title: "Ponyo",                                               year: 2008 },
-  { rank: 52,  title: "Shrek",                                               year: 2001 },
-  { rank: 53,  title: "Wolf Children",                                       year: 2012 },
-  { rank: 54,  title: "In This Corner of the World",                        year: 2016 },
-  { rank: 55,  title: "The Wind Rises",                                      year: 2013 },
-  { rank: 56,  title: "Shrek 2",                                             year: 2004 },
-  { rank: 57,  title: "Tekkonkinkreet",                                      year: 2006 },
-  { rank: 58,  title: "Toy Story",                                           year: 1995 },
-  { rank: 59,  title: "Ne Zha 2",                                            year: 2025 },
-  { rank: 60,  title: "Little Amélie or the Character of Rain",             year: 2025 },
-  { rank: 61,  title: "Up",                                                  year: 2009 },
-  { rank: 62,  title: "Paprika",                                             year: 2006 },
-  { rank: 63,  title: "Dou kyu sei – Classmates",                           year: 2016 },
-  { rank: 64,  title: "Ghost in the Shell",                                  year: 1995 },
-  { rank: 65,  title: "The Breadwinner",                                     year: 2017 },
-  { rank: 66,  title: "Flow",                                                year: 2024 },
-  { rank: 67,  title: "Angel's Egg",                                         year: 1985 },
-  { rank: 68,  title: "Monsters, Inc.",                                      year: 2001 },
-  { rank: 69,  title: "Robot Dreams",                                        year: 2023 },
-  { rank: 70,  title: "Castle in the Sky",                                   year: 1986 },
-  { rank: 71,  title: "The Summit of the Gods",                              year: 2021 },
-  { rank: 72,  title: "The Prince of Egypt",                                 year: 1998 },
-  { rank: 73,  title: "Kizumonogatari Part 2: Nekketsu",                    year: 2016 },
-  { rank: 74,  title: "The Incredibles",                                     year: 2004 },
-  { rank: 75,  title: "Isle of Dogs",                                        year: 2018 },
-  { rank: 76,  title: "Lilo & Stitch",                                       year: 2002 },
-  { rank: 77,  title: "The Fabulous Baron Munchausen",                       year: 1962 },
-  { rank: 78,  title: "The King and the Mockingbird",                        year: 1980 },
-  { rank: 79,  title: "Tangled",                                             year: 2010 },
-  { rank: 80,  title: "A Town Called Panic",                                 year: 2009 },
-  { rank: 81,  title: "Porco Rosso",                                         year: 1992 },
-  { rank: 82,  title: "Kirikou and the Sorceress",                          year: 1998 },
-  { rank: 83,  title: "The Plague Dogs",                                     year: 1982 },
-  { rank: 84,  title: "The Triplets of Belleville",                          year: 2003 },
-  { rank: 85,  title: "Finding Nemo",                                        year: 2003 },
-  { rank: 86,  title: "Tower",                                               year: 2016 },
-  { rank: 87,  title: "Loving Vincent",                                      year: 2017 },
-  { rank: 88,  title: "Fantastic Planet",                                    year: 1973 },
-  { rank: 89,  title: "Toy Story 3",                                         year: 2010 },
-  { rank: 90,  title: "On-Gaku: Our Sound",                                  year: 2019 },
-  { rank: 91,  title: "Mars Express",                                        year: 2023 },
-  { rank: 92,  title: "Memories",                                            year: 1995 },
-  { rank: 93,  title: "Alice",                                               year: 1988 },
-  { rank: 94,  title: "The Adventures of Prince Achmed",                    year: 1926 },
-  { rank: 95,  title: "Boy & the World",                                     year: 2013 },
-  { rank: 96,  title: "Guillermo del Toro's Pinocchio",                     year: 2022 },
-  { rank: 97,  title: "Who Framed Roger Rabbit",                            year: 1988 },
-  { rank: 98,  title: "The Princess and the Frog",                          year: 2009 },
-  { rank: 99,  title: "The Nightmare Before Christmas",                      year: 1993 },
-  { rank: 100, title: "Nimona",                                              year: 2023 }
+const FILMS_ANIMATED = [
+  {rank:1,title:"Grave of the Fireflies",year:1988},{rank:2,title:"Spirited Away",year:2001},{rank:3,title:"Princess Mononoke",year:1997},{rank:4,title:"Perfect Blue",year:1997},{rank:5,title:"It's Such a Beautiful Day",year:2012},{rank:6,title:"Howl's Moving Castle",year:2004},{rank:7,title:"Fantastic Mr. Fox",year:2009},{rank:8,title:"Azur & Asmar: The Princes' Quest",year:2006},{rank:9,title:"Akira",year:1988},{rank:10,title:"The Iron Giant",year:1999},{rank:11,title:"Song of the Sea",year:2014},{rank:12,title:"Look Back",year:2024},{rank:13,title:"Interstella 5555",year:2003},{rank:14,title:"Mary and Max",year:2009},{rank:15,title:"The Tale of The Princess Kaguya",year:2013},{rank:16,title:"The First Slam Dunk",year:2022},{rank:17,title:"Tokyo Godfathers",year:2003},{rank:18,title:"Kizumonogatari Part 3: Reiketsu",year:2017},{rank:19,title:"Marcel the Shell with Shoes On",year:2021},{rank:20,title:"Son of the White Mare",year:1981},{rank:21,title:"WALL·E",year:2008},{rank:22,title:"Millennium Actress",year:2001},{rank:23,title:"Wolfwalkers",year:2020},{rank:24,title:"Ratatouille",year:2007},{rank:25,title:"Your Name.",year:2016},{rank:26,title:"The Lion King",year:1994},{rank:27,title:"Flee",year:2021},{rank:28,title:"Persepolis",year:2007},{rank:29,title:"A Silent Voice: The Movie",year:2016},{rank:30,title:"The Wild Robot",year:2024},{rank:31,title:"Night Is Short, Walk On Girl",year:2017},{rank:32,title:"Mind Game",year:2004},{rank:33,title:"My Neighbor Totoro",year:1988},{rank:34,title:"Nausicaä of the Valley of the Wind",year:1984},{rank:35,title:"My Life as a Zucchini",year:2016},{rank:36,title:"Coraline",year:2009},{rank:37,title:"Klaus",year:2019},{rank:38,title:"Princes and Princesses",year:2000},{rank:39,title:"Whisper of the Heart",year:1995},{rank:40,title:"Ernest & Celestine",year:2012},{rank:41,title:"Vampire Hunter D: Bloodlust",year:2000},{rank:42,title:"Memoir of a Snail",year:2024},{rank:43,title:"Blue Giant",year:2023},{rank:44,title:"Mulan",year:1998},{rank:45,title:"The Wolf House",year:2018},{rank:46,title:"Kiki's Delivery Service",year:1989},{rank:47,title:"How to Train Your Dragon",year:2010},{rank:48,title:"Redline",year:2009},{rank:49,title:"Puss in Boots: The Last Wish",year:2022},{rank:50,title:"Coco",year:2017},{rank:51,title:"Ponyo",year:2008},{rank:52,title:"Shrek",year:2001},{rank:53,title:"Wolf Children",year:2012},{rank:54,title:"In This Corner of the World",year:2016},{rank:55,title:"The Wind Rises",year:2013},{rank:56,title:"Shrek 2",year:2004},{rank:57,title:"Tekkonkinkreet",year:2006},{rank:58,title:"Toy Story",year:1995},{rank:59,title:"Ne Zha 2",year:2025},{rank:60,title:"Little Amélie or the Character of Rain",year:2025},{rank:61,title:"Up",year:2009},{rank:62,title:"Paprika",year:2006},{rank:63,title:"Dou kyu sei – Classmates",year:2016},{rank:64,title:"Ghost in the Shell",year:1995},{rank:65,title:"The Breadwinner",year:2017},{rank:66,title:"Flow",year:2024},{rank:67,title:"Angel's Egg",year:1985},{rank:68,title:"Monsters, Inc.",year:2001},{rank:69,title:"Robot Dreams",year:2023},{rank:70,title:"Castle in the Sky",year:1986},{rank:71,title:"The Summit of the Gods",year:2021},{rank:72,title:"The Prince of Egypt",year:1998},{rank:73,title:"Kizumonogatari Part 2: Nekketsu",year:2016},{rank:74,title:"The Incredibles",year:2004},{rank:75,title:"Isle of Dogs",year:2018},{rank:76,title:"Lilo & Stitch",year:2002},{rank:77,title:"The Fabulous Baron Munchausen",year:1962},{rank:78,title:"The King and the Mockingbird",year:1980},{rank:79,title:"Tangled",year:2010},{rank:80,title:"A Town Called Panic",year:2009},{rank:81,title:"Porco Rosso",year:1992},{rank:82,title:"Kirikou and the Sorceress",year:1998},{rank:83,title:"The Plague Dogs",year:1982},{rank:84,title:"The Triplets of Belleville",year:2003},{rank:85,title:"Finding Nemo",year:2003},{rank:86,title:"Tower",year:2016},{rank:87,title:"Loving Vincent",year:2017},{rank:88,title:"Fantastic Planet",year:1973},{rank:89,title:"Toy Story 3",year:2010},{rank:90,title:"On-Gaku: Our Sound",year:2019},{rank:91,title:"Mars Express",year:2023},{rank:92,title:"Memories",year:1995},{rank:93,title:"Alice",year:1988},{rank:94,title:"The Adventures of Prince Achmed",year:1926},{rank:95,title:"Boy & the World",year:2013},{rank:96,title:"Guillermo del Toro's Pinocchio",year:2022},{rank:97,title:"Who Framed Roger Rabbit",year:1988},{rank:98,title:"The Princess and the Frog",year:2009},{rank:99,title:"The Nightmare Before Christmas",year:1993},{rank:100,title:"Nimona",year:2023}
 ];
 
-// STATE
+const FILMS_HORROR = [
+  {rank:1,title:"Perfect Blue",year:1997},{rank:2,title:"The Thing",year:1982},{rank:3,title:"The Silence of the Lambs",year:1991},{rank:4,title:"Twin Peaks: Fire Walk with Me",year:1992},{rank:5,title:"Psycho",year:1960},{rank:6,title:"The Cremator",year:1969},{rank:7,title:"Cure",year:1997},{rank:8,title:"The Night of the Hunter",year:1955},{rank:9,title:"Alien",year:1979},{rank:10,title:"Kwaidan",year:1964},{rank:11,title:"Demons",year:1971},{rank:12,title:"The Devils",year:1971},{rank:13,title:"The Shining",year:1980},{rank:14,title:"Rosemary's Baby",year:1968},{rank:15,title:"Coraline",year:2009},{rank:16,title:"Diabolique",year:1955},{rank:17,title:"What Ever Happened to Baby Jane?",year:1962},{rank:18,title:"Vampire Hunter D: Bloodlust",year:2000},{rank:19,title:"Black Swan",year:2010},{rank:20,title:"The Wolf House",year:2018},{rank:21,title:"Seconds",year:1966},{rank:22,title:"Phantom of the Paradise",year:1974},{rank:23,title:"Faust",year:1926},{rank:24,title:"Get Out",year:2017},{rank:25,title:"The Innocents",year:1961},{rank:26,title:"What We Do in the Shadows",year:2014},{rank:27,title:"Aliens",year:1986},{rank:28,title:"Sinners",year:2025},{rank:29,title:"The Sixth Sense",year:1999},{rank:30,title:"The Phantom Carriage",year:1921},{rank:31,title:"Onibaba",year:1964},{rank:32,title:"Godzilla Minus One",year:2023},{rank:33,title:"Kuroneko",year:1968},{rank:34,title:"The Cabinet of Dr. Caligari",year:1920},{rank:35,title:"Godzilla",year:1954},{rank:36,title:"One Cut of the Dead",year:2017},{rank:37,title:"The Rocky Horror Picture Show",year:1975},{rank:38,title:"Manichitrathazhu",year:1993},{rank:39,title:"Santa Sangre",year:1989},{rank:40,title:"Possession",year:1981},{rank:41,title:"I Saw the Devil",year:2010},{rank:42,title:"Let the Right One In",year:2008},{rank:43,title:"Peeping Tom",year:1960},{rank:44,title:"Hour of the Wolf",year:1968},{rank:45,title:"Obsession",year:2025},{rank:46,title:"Scream",year:1996},{rank:47,title:"The Vanishing",year:1988},{rank:48,title:"Evil Dead II",year:1987},{rank:49,title:"The Lighthouse",year:2019},{rank:50,title:"Alice",year:1988},{rank:51,title:"The Fly",year:1986},{rank:52,title:"House",year:1977},{rank:53,title:"Misery",year:1990},{rank:54,title:"The Hourglass Sanatorium",year:1973},{rank:55,title:"Train to Busan",year:2016},{rank:56,title:"The Wailing",year:2016},{rank:57,title:"The Wicker Man",year:1973},{rank:58,title:"Beauty and the Beast",year:1946},{rank:59,title:"Mother Joan of the Angels",year:1961},{rank:60,title:"Bride of Frankenstein",year:1935},{rank:61,title:"Dawn of the Dead",year:1978},{rank:62,title:"The Exorcist",year:1973},{rank:63,title:"Shaun of the Dead",year:2004},{rank:64,title:"Invasion of the Body Snatchers",year:1978},{rank:65,title:"Braindead",year:1992},{rank:66,title:"Night of the Living Dead",year:1968},{rank:67,title:"Freaks",year:1932},{rank:68,title:"Hereditary",year:2018},{rank:69,title:"Wait Until Dark",year:1967},{rank:70,title:"Suspiria",year:1977},{rank:71,title:"Jaws",year:1975},{rank:72,title:"Thesis",year:1996},{rank:73,title:"Eyes Without a Face",year:1960},{rank:74,title:"Deep Red",year:1975},{rank:75,title:"The Skeleton of Mrs. Morales",year:1960},{rank:76,title:"Funny Games",year:1997},{rank:77,title:"Repulsion",year:1965},{rank:78,title:"The Man Who Laughs",year:1928},{rank:79,title:"Inland Empire",year:2006},{rank:80,title:"Little Shop of Horrors",year:1986},{rank:81,title:"Humanist Vampire Seeking Consenting Suicidal Person",year:2023},{rank:82,title:"Witchhammer",year:1970},{rank:83,title:"Angel Dust",year:1994},{rank:84,title:"Scooby-Doo on Zombie Island",year:1998},{rank:85,title:"The Tenant",year:1976},{rank:86,title:"Shin Godzilla",year:2016},{rank:87,title:"The Invisible Man",year:1933},{rank:88,title:"Videodrome",year:1983},{rank:89,title:"Kotoko",year:2011},{rank:90,title:"The Incredible Shrinking Man",year:1957},{rank:91,title:"Tetsuo: The Iron Man",year:1989},{rank:92,title:"The Third Part of the Night",year:1971},{rank:93,title:"Jacob's Ladder",year:1990},{rank:94,title:"Manhunter",year:1986},{rank:95,title:"28 Years Later: The Bone Temple",year:2026},{rank:96,title:"Helter Skelter",year:2012},{rank:97,title:"The Devil",year:1972},{rank:98,title:"Dead Ringers",year:1988},{rank:99,title:"The Happiness of the Katakuris",year:2001},{rank:100,title:"Carrie",year:1976}
+];
+
+const FILMS_SCIFI = [
+  {rank:1,title:"Neon Genesis Evangelion: The End of Evangelion",year:1997},{rank:2,title:"Gintama: The Very Final",year:2021},{rank:3,title:"Interstellar",year:2014},{rank:4,title:"Spider-Man: Across the Spider-Verse",year:2023},{rank:5,title:"The Empire Strikes Back",year:1980},{rank:6,title:"Stalker",year:1979},{rank:7,title:"Spider-Man: Into the Spider-Verse",year:2018},{rank:8,title:"Dune: Part Two",year:2024},{rank:9,title:"The Thing",year:1982},{rank:10,title:"Project Hail Mary",year:2026},{rank:11,title:"Nirvanna the Band the Show the Movie",year:2025},{rank:12,title:"Children of Men",year:2006},{rank:13,title:"Terminator 2: Judgment Day",year:1991},{rank:14,title:"Evangelion: 3.0+1.0 Thrice Upon a Time",year:2021},{rank:15,title:"The Prestige",year:2006},{rank:16,title:"Akira",year:1988},{rank:17,title:"The Iron Giant",year:1999},{rank:18,title:"Interstella 5555",year:2003},{rank:19,title:"The Face of Another",year:1966},{rank:20,title:"The Disappearance of Haruhi Suzumiya",year:2010},{rank:21,title:"Alien",year:1979},{rank:22,title:"2001: A Space Odyssey",year:1968},{rank:23,title:"Everything Everywhere All at Once",year:2022},{rank:24,title:"Metropolis",year:1927},{rank:25,title:"Eternal Sunshine of the Spotless Mind",year:2004},{rank:26,title:"WALL·E",year:2008},{rank:27,title:"Inception",year:2010},{rank:28,title:"Solaris",year:1972},{rank:29,title:"Back to the Future",year:1985},{rank:30,title:"The Wild Robot",year:2024},{rank:31,title:"Nausicaä of the Valley of the Wind",year:1984},{rank:32,title:"The Matrix",year:1999},{rank:33,title:"Vampire Hunter D: Bloodlust",year:2000},{rank:34,title:"Patlabor 2: The Movie",year:1993},{rank:35,title:"Mad Max: Fury Road",year:2015},{rank:36,title:"Star Wars",year:1977},{rank:37,title:"Dead Man's Letters",year:1986},{rank:38,title:"Seconds",year:1966},{rank:39,title:"Gintama: The Final Chapter",year:2013},{rank:40,title:"Arrival",year:2016},{rank:41,title:"Redline",year:2009},{rank:42,title:"Cowboy Bebop: The Movie",year:2001},{rank:43,title:"Logan",year:2017},{rank:44,title:"Jurassic Park",year:1993},{rank:45,title:"Aliens",year:1986},{rank:46,title:"Monica's Gang in an Adventure in Time",year:2007},{rank:47,title:"Little Fish",year:2020},{rank:48,title:"A Clockwork Orange",year:1971},{rank:49,title:"Paprika",year:2006},{rank:50,title:"Blade Runner 2049",year:2017},{rank:51,title:"Blade Runner",year:1982},{rank:52,title:"Brazil",year:1985},{rank:53,title:"Ghost in the Shell",year:1995},{rank:54,title:"Return of the Jedi",year:1983},{rank:55,title:"August in the Water",year:1995},{rank:56,title:"Robot Dreams",year:2023},{rank:57,title:"Castle in the Sky",year:1986},{rank:58,title:"Godzilla Minus One",year:2023},{rank:59,title:"Star Wars: Episode III – Revenge of the Sith",year:2005},{rank:60,title:"Lilo & Stitch",year:2002},{rank:61,title:"Swallowtail Butterfly",year:1996},{rank:62,title:"Godzilla",year:1954},{rank:63,title:"The Rocky Horror Picture Show",year:1975},{rank:64,title:"2046",year:2004},{rank:65,title:"Resurrection",year:2025},{rank:66,title:"Avengers: Infinity War",year:2018},{rank:67,title:"On the Silver Globe",year:1988},{rank:68,title:"Fantastic Planet",year:1973},{rank:69,title:"A Visitor to a Museum",year:1989},{rank:70,title:"The Hole",year:1998},{rank:71,title:"Dirty Computer",year:2018},{rank:72,title:"Mars Express",year:2023},{rank:73,title:"Memories",year:1995},{rank:74,title:"Planet of the Apes",year:1968},{rank:75,title:"Happyend",year:2024},{rank:76,title:"Ivan Vasilyevich Changes His Profession",year:1973},{rank:77,title:"Nowhere",year:1997},{rank:78,title:"The Fly",year:1986},{rank:79,title:"Junk Head",year:2017},{rank:80,title:"Batman: The Dark Knight Returns, Part 2",year:2013},{rank:81,title:"Evangelion: 2.0 You Can (Not) Advance",year:2009},{rank:82,title:"Heart of a Dog",year:1988},{rank:83,title:"Born in Flames",year:1983},{rank:84,title:"Guardians of the Galaxy Vol. 3",year:2023},{rank:85,title:"Her",year:2013},{rank:86,title:"Avengers: Endgame",year:2019},{rank:87,title:"Ex Machina",year:2015},{rank:88,title:"Nimona",year:2023},{rank:89,title:"Urusei Yatsura: Beautiful Dreamer",year:1984},{rank:90,title:"Dawn of the Dead",year:1978},{rank:91,title:"Bride of Frankenstein",year:1935},{rank:92,title:"Gintama: The Movie",year:2010},{rank:93,title:"Mauvais Sang",year:1986},{rank:94,title:"Detective Conan: The Phantom of Baker Street",year:2002},{rank:95,title:"Invasion of the Body Snatchers",year:1978},{rank:96,title:"Star Trek II: The Wrath of Khan",year:1982},{rank:97,title:"Until the End of the World",year:1991},{rank:98,title:"Night of the Living Dead",year:1968},{rank:99,title:"The Hunger Games: Catching Fire",year:2013},{rank:100,title:"The Secret of the Third Planet",year:1981}
+];
+
+const GENRE_CONFIG = {
+  animated: {
+    label:'ANIMATED FILMS', stars:'✿✿✿✿✿',
+    linkUrl:'https://letterboxd.com/brsan/list/letterboxds-top-100-animated-films/',
+    linkText:"Letterboxd's top 100 animated films",
+    bodyClass:'', storagePrefix:'anim100', films:FILMS_ANIMATED
+  },
+  horror: {
+    label:'HORROR FILMS', stars:'☠☠☠☠☠',
+    linkUrl:'https://letterboxd.com/official/list/top-250-horror-films/',
+    linkText:"Letterboxd's top 250 horror films (top 100)",
+    bodyClass:'mode-horror', storagePrefix:'horror100', films:FILMS_HORROR
+  },
+  scifi: {
+    label:'SCI-FI FILMS', stars:'★★★★★',
+    linkUrl:'https://letterboxd.com/official/list/top-250-science-fiction-films/',
+    linkText:"Letterboxd's top 250 sci-fi films (top 100)",
+    bodyClass:'mode-scifi', storagePrefix:'scifi100', films:FILMS_SCIFI
+  }
+};
+
+let currentGenre = 'animated';
 let currentUser = null;
 let currentFilter = 'all';
-let players = {}; // { name: Set of rank indices watched }
+let currentTab = 'checklist';
+let players = { animated:{}, horror:{}, scifi:{} };
 
-function getStorageKey(name) { return 'anim100_' + name.toLowerCase().replace(/\s+/g,'_'); }
-
-function loadUser(name) {
-  const raw = localStorage.getItem(getStorageKey(name));
-  if (raw) {
-    try { return new Set(JSON.parse(raw)); } catch(e) {}
-  }
+function getStorageKey(genre, name) {
+  return GENRE_CONFIG[genre].storagePrefix + '_' + name.toLowerCase().replace(/\s+/g,'_');
+}
+function loadUser(genre, name) {
+  const raw = localStorage.getItem(getStorageKey(genre, name));
+  if (raw) { try { return new Set(JSON.parse(raw)); } catch(e) {} }
   return new Set();
 }
-
-function saveUser(name, watched) {
-  localStorage.setItem(getStorageKey(name), JSON.stringify([...watched]));
+function saveUser(genre, name, watched) {
+  localStorage.setItem(getStorageKey(genre, name), JSON.stringify([...watched]));
 }
-
-function encodeShareCode(name, watched) {
-  const bits = new Array(100).fill(0);
-  watched.forEach(r => { if (r >= 1 && r <= 100) bits[r-1] = 1; });
-  const binaryStr = bits.join('');
-  // Pack into base64
-  const safeName = encodeURIComponent(name);
-  return btoa(safeName + '|' + binaryStr);
+function saveDisplayName(genre, name) {
+  localStorage.setItem(getStorageKey(genre, name) + '_displayname', name);
 }
-
-function decodeShareCode(code) {
-  try {
-    const decoded = atob(code);
-    const pipeIdx = decoded.indexOf('|');
-    if (pipeIdx === -1) return null;
-    const name = decodeURIComponent(decoded.slice(0, pipeIdx));
-    const bits = decoded.slice(pipeIdx + 1);
-    if (bits.length !== 100) return null;
-    const watched = new Set();
-    for (let i = 0; i < 100; i++) {
-      if (bits[i] === '1') watched.add(i + 1);
-    }
-    return { name, watched };
-  } catch(e) { return null; }
-}
-
-// UI FUNCTIONS
-function getSavedNames() {
+function getSavedNames(genre) {
+  const prefix = GENRE_CONFIG[genre].storagePrefix + '_';
   const names = [];
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
-    if (key.startsWith('anim100_')) {
-      // Recover display name from stored data, fallback to key
-      try {
-        const raw = localStorage.getItem(key);
-        // name is encoded in key: anim100_<lowercased_underscored>
-        // we store the real display name separately
-        const nameKey = key + '_displayname';
-        const stored = localStorage.getItem(nameKey);
-        if (stored) names.push(stored);
-      } catch(e) {}
+    if (key && key.startsWith(prefix) && key.endsWith('_displayname')) {
+      const stored = localStorage.getItem(key);
+      if (stored) names.push(stored);
     }
   }
-  return names;
+  return [...new Set(names)];
 }
 
-function saveDisplayName(name) {
-  const key = getStorageKey(name) + '_displayname';
-  localStorage.setItem(key, name);
+function encodeShareCode(genre, name, watched) {
+  const bits = new Array(100).fill(0);
+  watched.forEach(r => { if (r >= 1 && r <= 100) bits[r-1] = 1; });
+  return btoa(genre + '|' + encodeURIComponent(name) + '|' + bits.join(''));
+}
+function decodeShareCode(code) {
+  try {
+    const decoded = atob(code);
+    const parts = decoded.split('|');
+    if (parts.length < 3) return null;
+    const genre = parts[0]; const name = decodeURIComponent(parts[1]); const bits = parts[2];
+    if (bits.length !== 100 || !GENRE_CONFIG[genre]) return null;
+    const watched = new Set();
+    for (let i = 0; i < 100; i++) { if (bits[i] === '1') watched.add(i + 1); }
+    return { genre, name, watched };
+  } catch(e) { return null; }
+}
+
+function switchGenre(genre, el) {
+  currentGenre = genre;
+  currentFilter = 'all';
+  const cfg = GENRE_CONFIG[genre];
+  document.body.className = cfg.bodyClass;
+  document.getElementById('headingGenre').textContent = cfg.label;
+  document.getElementById('headingStars').textContent = cfg.stars;
+  document.getElementById('headingLink').innerHTML = `<a href="${cfg.linkUrl}" target="_blank" style="color:inherit">${cfg.linkText}</a> — let's gamify watching some cool films!`;
+  document.querySelectorAll('.genre-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  if (!players[genre]) players[genre] = {};
+  if (currentUser && !players[genre][currentUser]) players[genre][currentUser] = loadUser(genre, currentUser);
+  document.querySelectorAll('.filter-btn').forEach((b,i) => b.classList.toggle('active', i===0));
+  if (currentUser) { renderHeaderUser(); updateShareCode(); }
+  updateChecklist();
+  if (currentTab === 'compare') renderCompare();
 }
 
 function setUser() {
   const nameInput = document.getElementById('nameInput');
   const name = (nameInput ? nameInput.value : '').trim();
-  if (!name) { showToast('✿ Please enter your name first!'); return; }
+  if (!name) { showToast('Please enter your name first!'); return; }
   currentUser = name;
-  players[name] = loadUser(name);
-  saveDisplayName(name);
-  renderHeaderUser();
-  updateChecklist();
-  updateShareCode();
+  if (!players[currentGenre][name]) players[currentGenre][name] = loadUser(currentGenre, name);
+  saveDisplayName(currentGenre, name);
+  renderHeaderUser(); updateChecklist(); updateShareCode();
   document.getElementById('noUserMsg').style.display = 'none';
   document.getElementById('shareArea').style.display = 'flex';
-  const isReturning = players[name].size > 0;
-  showToast(isReturning ? `✿ Welcome back, ${name}! ${players[name].size}/100 films~ 🎬` : `✿ Welcome, ${name}! Let's see those films~ 🎬`);
+  const isReturning = players[currentGenre][name].size > 0;
+  showToast(isReturning ? `Welcome back, ${name}! ${players[currentGenre][name].size}/100 🎬` : `Welcome, ${name}! Time to get watching 🎬`);
 }
 
 function renderHeaderUser() {
-  const right = document.getElementById('headerRight');
-  right.innerHTML = `
-    <div class="current-user-badge">
-      <span class="dot"></span>
-      <span><strong>${currentUser}</strong> — ${players[currentUser].size}/100</span>
-    </div>
-    <button class="btn danger" onclick="switchUser()">Switch User</button>
-  `;
-}
-
-function renderNamePicker() {
-  const names = getSavedNames();
-  const pickerHtml = names.length > 0 ? `
-    <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:flex-end;">
-      <span style="font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;">returning?</span>
-      ${names.map(n => `
-        <button onclick="quickLogin('${n.replace(/'/g,"\\'")}')" style="
-          background:white;border:2px solid var(--border);color:var(--pink-deep);
-          padding:5px 12px;border-radius:50px;font-family:'Nunito',sans-serif;
-          font-size:12px;font-weight:800;cursor:pointer;transition:all 0.15s;
-          box-shadow:0 2px 6px rgba(255,126,179,0.1);
-        " onmouseover="this.style.borderColor='var(--pink)'" onmouseout="this.style.borderColor='var(--border)'">${n}</button>
-      `).join('')}
-    </div>
-  ` : '';
-  return pickerHtml;
-}
-
-function quickLogin(name) {
-  currentUser = name;
-  players[name] = loadUser(name);
-  renderHeaderUser();
-  updateChecklist();
-  updateShareCode();
-  document.getElementById('noUserMsg').style.display = 'none';
-  document.getElementById('shareArea').style.display = 'flex';
-  showToast(`✿ Welcome back, ${name}! ${players[name].size}/100 films~ 🎬`);
+  const count = currentUser ? (players[currentGenre][currentUser]?.size || 0) : 0;
+  document.getElementById('headerRight').innerHTML = `
+    <div class="current-user-badge"><span class="dot"></span><span><strong>${currentUser}</strong> — ${count}/100</span></div>
+    <button class="btn danger" onclick="switchUser()">Switch User</button>`;
 }
 
 function switchUser() {
   currentUser = null;
-  const names = getSavedNames();
-  const pickerHtml = names.length > 0 ? `
-    <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:flex-end;">
-      <span style="font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;">returning?</span>
-      ${names.map(n => `
-        <button onclick="quickLogin('${n.replace(/'/g,"\\'")}')" style="
-          background:white;border:2px solid var(--border);color:var(--pink-deep);
-          padding:5px 12px;border-radius:50px;font-family:'Nunito',sans-serif;
-          font-size:12px;font-weight:800;cursor:pointer;transition:all 0.15s;
-          box-shadow:0 2px 6px rgba(255,126,179,0.1);
-        " onmouseover="this.style.borderColor='var(--pink)'" onmouseout="this.style.borderColor='var(--border)'">${n}</button>
-      `).join('')}
-    </div>
-  ` : '';
-
-  document.getElementById('headerRight').innerHTML = `
-    <div>
-      <div class="name-setup" id="nameSetup">
-        <input type="text" id="nameInput" placeholder="Your name…" maxlength="20" autocomplete="off"
-          onkeydown="if(event.key==='Enter') setUser()">
-        <button class="btn" onclick="setUser()">Start</button>
-      </div>
-      ${pickerHtml}
-    </div>
-  `;
+  const names = getSavedNames(currentGenre);
+  const pickerHtml = names.length > 0 ? `<div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:flex-end;"><span style="font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;">returning?</span>${names.map(n=>`<button onclick="quickLogin('${n.replace(/'/g,"\\'")}');" style="background:var(--surface2);border:2px solid var(--border);color:var(--score-color);padding:5px 12px;border-radius:50px;font-family:'Nunito',sans-serif;font-size:12px;font-weight:800;cursor:pointer;">${n}</button>`).join('')}</div>` : '';
+  document.getElementById('headerRight').innerHTML = `<div><div class="name-setup" id="nameSetup"><input type="text" id="nameInput" placeholder="Your name…" maxlength="20" autocomplete="off" onkeydown="if(event.key==='Enter') setUser()"><button class="btn" onclick="setUser()">Start</button></div>${pickerHtml}</div>`;
   document.getElementById('shareArea').style.display = 'none';
   document.getElementById('noUserMsg').style.display = 'block';
   updateChecklist();
 }
 
-function updateChecklist() {
-  const watched = currentUser ? players[currentUser] : new Set();
-  const count = watched.size;
+function quickLogin(name) {
+  currentUser = name;
+  if (!players[currentGenre][name]) players[currentGenre][name] = loadUser(currentGenre, name);
+  renderHeaderUser(); updateChecklist(); updateShareCode();
+  document.getElementById('noUserMsg').style.display = 'none';
+  document.getElementById('shareArea').style.display = 'flex';
+  showToast(`Welcome back, ${name}! ${players[currentGenre][name].size}/100 🎬`);
+}
 
+function updateChecklist() {
+  const watched = currentUser ? (players[currentGenre][currentUser] || new Set()) : new Set();
+  const count = watched.size;
+  const films = GENRE_CONFIG[currentGenre].films;
   document.getElementById('scoreDisplay').innerHTML = `${count}<span>/100</span>`;
   document.getElementById('progressFill').style.width = count + '%';
-
-  let films = FILMS;
-  if (currentFilter === 'watched') films = FILMS.filter(f => watched.has(f.rank));
-  if (currentFilter === 'unwatched') films = FILMS.filter(f => !watched.has(f.rank));
-
-  const list = document.getElementById('filmList');
-  list.innerHTML = films.map(f => `
-    <div class="film-row ${watched.has(f.rank) ? 'checked' : ''}" onclick="toggleFilm(${f.rank})" data-rank="${f.rank}">
-      <span class="film-rank">
-        <span class="check-icon" style="display:${watched.has(f.rank)?'inline-flex':'none'}">✓</span>
-        ${watched.has(f.rank) ? '' : '#' + f.rank}
-      </span>
+  let list = films;
+  if (currentFilter === 'watched') list = films.filter(f => watched.has(f.rank));
+  if (currentFilter === 'unwatched') list = films.filter(f => !watched.has(f.rank));
+  const el = document.getElementById('filmList');
+  el.innerHTML = list.map(f => `
+    <div class="film-row ${watched.has(f.rank)?'checked':''}" onclick="toggleFilm(${f.rank})" data-rank="${f.rank}">
+      <span class="film-rank"><span class="check-icon" style="display:${watched.has(f.rank)?'inline-flex':'none'}">✓</span>${watched.has(f.rank)?'':`#${f.rank}`}</span>
       <span class="film-title">${f.title}</span>
       <span class="film-year">${f.year}</span>
-    </div>
-  `).join('');
-
+    </div>`).join('');
   if (currentUser) renderHeaderUser();
 }
 
 function toggleFilm(rank) {
-  if (!currentUser) {
-    showToast('✿ Set your name first to track films!');
-    return;
-  }
-  const watched = players[currentUser];
-  if (watched.has(rank)) {
-    watched.delete(rank);
-  } else {
-    watched.add(rank);
-  }
-  saveUser(currentUser, watched);
-  updateChecklist();
-  updateShareCode();
-  if (players[currentUser].size === 100) showToast('🏆✨ PERFECT SCORE! You\'ve seen them all!!');
+  if (!currentUser) { showToast('Set your name first to track films!'); return; }
+  const watched = players[currentGenre][currentUser];
+  if (watched.has(rank)) { watched.delete(rank); } else { watched.add(rank); }
+  saveUser(currentGenre, currentUser, watched);
+  updateChecklist(); updateShareCode();
+  if (players[currentGenre][currentUser].size === 100) showToast('🏆✨ PERFECT SCORE! You\'ve seen them all!!');
 }
 
 function setFilter(filter, el) {
@@ -1140,13 +589,12 @@ function setFilter(filter, el) {
 
 function updateShareCode() {
   if (!currentUser) return;
-  const code = encodeShareCode(currentUser, players[currentUser]);
+  const code = encodeShareCode(currentGenre, currentUser, players[currentGenre][currentUser] || new Set());
   document.getElementById('shareCode').textContent = code;
 }
-
 function copyShareCode() {
   const code = document.getElementById('shareCode').textContent;
-  navigator.clipboard.writeText(code).then(() => showToast('Share code copied! Send it to your friends.'));
+  navigator.clipboard.writeText(code).then(() => showToast('Share code copied! Send it to friends.'));
 }
 
 function importFriend() {
@@ -1154,128 +602,75 @@ function importFriend() {
   if (!code) { showToast('Paste a share code first!'); return; }
   const result = decodeShareCode(code);
   if (!result) { showToast('Invalid code — ask your friend to copy it again.'); return; }
-  const { name, watched } = result;
-  players[name] = watched;
+  const { genre, name, watched } = result;
+  if (genre !== currentGenre) { showToast(`That's a ${GENRE_CONFIG[genre]?.label || genre} code! Switch genre tabs first.`); return; }
+  if (!players[genre]) players[genre] = {};
+  players[genre][name] = watched;
   document.getElementById('importInput').value = '';
   renderCompare();
   showToast(`Added ${name} — ${watched.size}/100 films!`);
 }
 
 function removePlayer(name) {
-  delete players[name];
+  delete players[currentGenre][name];
   renderCompare();
 }
 
 function renderCompare() {
-  const allPlayers = Object.entries(players)
-    .map(([name, watched]) => ({ name, count: watched.size }))
-    .sort((a, b) => b.count - a.count);
-
-  // Leaderboard
+  const genrePlayers = players[currentGenre] || {};
+  const allPlayers = Object.entries(genrePlayers).map(([name,watched])=>({name,count:watched.size})).sort((a,b)=>b.count-a.count);
   const lb = document.getElementById('leaderboard');
   if (allPlayers.length === 0) {
     lb.innerHTML = '';
-    document.getElementById('compareGridWrap').innerHTML = `
-      <div class="empty-state">
-        <div class="icon">🎬</div>
-        <h3>No players yet</h3>
-        <p style="color:var(--muted)">Add yourself with a name above, then share your code with friends to compare.</p>
-      </div>
-    `;
+    document.getElementById('compareGridWrap').innerHTML = `<div class="empty-state"><div class="icon">🎬</div><h3>No players yet</h3><p>Set your name above, then share your code with friends to compare!</p></div>`;
     return;
   }
-
-  const medals = ['🥇', '🥈', '🥉'];
-  lb.innerHTML = allPlayers.slice(0, 3).map((p, i) => `
-    <div class="leader-card rank-${i+1}">
-      <span class="leader-medal">${medals[i]}</span>
-      <span class="leader-name">${p.name}</span>
-      <span class="leader-score">${p.count} / 100 films</span>
-    </div>
-  `).join('');
-
-  // Grid
-  const playerRankClasses = ['gold-col', 'silver-col', 'bronze-col'];
-  const headers = allPlayers.map((p, i) => {
-    const cls = i < 3 ? playerRankClasses[i] : 'other-col';
-    const isMe = currentUser && p.name === currentUser;
-    return `<th class="${cls}">${p.name}${isMe ? ' (you)' : ''} <button class="player-remove" onclick="removePlayer('${p.name.replace(/'/g,"\\'")}')">✕</button></th>`;
-  }).join('');
-
-  const rows = FILMS.map(f => {
-    const cells = allPlayers.map(p => {
-      const seen = players[p.name]?.has(f.rank);
-      return `<td class="check-cell">${seen ? '✅' : '·'}</td>`;
-    }).join('');
-    return `<tr><td class="rank-num">#${f.rank}</td><td class="film-name">${f.title}</td>${cells}</tr>`;
-  }).join('');
-
-  document.getElementById('compareGridWrap').innerHTML = `
-    <div class="compare-grid-wrap">
-      <table class="compare-grid">
-        <thead>
-          <tr>
-            <th class="rank-col">#</th>
-            <th class="film-col">Film</th>
-            ${headers}
-          </tr>
-        </thead>
-        <tbody>${rows}</tbody>
-      </table>
-    </div>
-  `;
+  const medals = ['🥇','🥈','🥉'];
+  lb.innerHTML = allPlayers.slice(0,3).map((p,i)=>`<div class="leader-card rank-${i+1}"><span class="leader-medal">${medals[i]}</span><span class="leader-name">${p.name}</span><span class="leader-score">${p.count} / 100 films</span></div>`).join('');
+  const rankClasses = ['gold-col','silver-col','bronze-col'];
+  const headers = allPlayers.map((p,i)=>`<th class="${i<3?rankClasses[i]:'other-col'}">${p.name}${currentUser&&p.name===currentUser?' (you)':''} <button class="player-remove" onclick="removePlayer('${p.name.replace(/'/g,"\\'")}')">✕</button></th>`).join('');
+  const films = GENRE_CONFIG[currentGenre].films;
+  const rows = films.map(f=>`<tr><td class="rank-num">#${f.rank}</td><td class="film-name">${f.title}</td>${allPlayers.map(p=>`<td class="check-cell">${genrePlayers[p.name]?.has(f.rank)?'✅':'·'}</td>`).join('')}</tr>`).join('');
+  document.getElementById('compareGridWrap').innerHTML = `<div class="compare-grid-wrap"><table class="compare-grid"><thead><tr><th class="rank-col">#</th><th class="film-col">Film</th>${headers}</tr></thead><tbody>${rows}</tbody></table></div>`;
 }
 
-function switchTab(name) {
+function switchTab(name, event) {
+  currentTab = name;
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  event.target.classList.add('active');
+  if (event && event.target) event.target.classList.add('active');
   document.getElementById('panel-' + name).classList.add('active');
   if (name === 'compare') renderCompare();
 }
 
 function showToast(msg) {
   const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
+  t.textContent = msg; t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 3000);
 }
 
 // INIT
 updateChecklist();
 
-// Show returning user picker on initial load
-const initNames = getSavedNames();
+const initNames = getSavedNames(currentGenre);
 if (initNames.length > 0) {
   const right = document.getElementById('headerRight');
-  const existingSetup = right.querySelector('.name-setup');
   const pickerDiv = document.createElement('div');
   pickerDiv.style.cssText = 'margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:flex-end;';
-  pickerDiv.innerHTML = `
-    <span style="font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;">returning?</span>
-    ${initNames.map(n => `
-      <button onclick="quickLogin('${n.replace(/'/g,"\\'")}')" style="
-        background:white;border:2px solid var(--border);color:var(--pink-deep);
-        padding:5px 12px;border-radius:50px;font-family:'Nunito',sans-serif;
-        font-size:12px;font-weight:800;cursor:pointer;
-        box-shadow:0 2px 6px rgba(255,126,179,0.1);
-      " onmouseover="this.style.borderColor='var(--pink)'" onmouseout="this.style.borderColor='var(--border)'">${n}</button>
-    `).join('')}
-  `;
+  pickerDiv.innerHTML = `<span style="font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;">returning?</span>${initNames.map(n=>`<button onclick="quickLogin('${n.replace(/'/g,"\\'")}');" style="background:var(--surface2);border:2px solid var(--border);color:var(--score-color);padding:5px 12px;border-radius:50px;font-family:'Nunito',sans-serif;font-size:12px;font-weight:800;cursor:pointer;">${n}</button>`).join('')}`;
   right.appendChild(pickerDiv);
 }
 
-// Add Enter key to initial name input
 const initialInput = document.getElementById('nameInput');
 if (initialInput) initialInput.addEventListener('keydown', e => { if (e.key === 'Enter') setUser(); });
 
-// Check URL for auto-import
 const urlParams = new URLSearchParams(window.location.search);
 const autoCode = urlParams.get('share');
 if (autoCode) {
   const result = decodeShareCode(autoCode);
   if (result) {
-    players[result.name] = result.watched;
+    if (!players[result.genre]) players[result.genre] = {};
+    players[result.genre][result.name] = result.watched;
     showToast(`Loaded ${result.name}'s list from link!`);
   }
 }
